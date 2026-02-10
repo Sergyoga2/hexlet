@@ -67,7 +67,7 @@ export function FeaturesSection() {
             <span className={classes.highlight}>одном окне</span>
           </Title>
 
-          <Text c="dimmed" mt="md">
+          <Text c="dimmed" className={classes.description}>
             Блок оформлен в стиле FeaturesTitle: выразительный заголовок, короткое
             пояснение и преимущества, которые быстро показывают ценность продукта.
           </Text>

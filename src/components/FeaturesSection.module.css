@@ -1,17 +1,15 @@
 .content {
-  max-width: 960px;
-  margin: 0 auto;
+  max-width: 540px;
 }
 
 .wrapper {
-  max-width: 760px;
+  max-width: 540px;
 }
 
 .title {
   font-size: 34px;
   line-height: 1.2;
   font-weight: 800;
-  max-width: 760px;
 
   @media (max-width: $mantine-breakpoint-sm) {
     font-size: 28px;
@@ -24,5 +22,4 @@
 
 .description {
   margin-top: var(--mantine-spacing-md);
-  max-width: 640px;
 }
