@@ -1,5 +1,8 @@
 .content {
   max-width: 720px;
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .title {
@@ -16,7 +19,6 @@
 .highlight {
   color: var(--mantine-color-blue-filled);
 }
-
 
 .description {
   margin-top: var(--mantine-spacing-md);
