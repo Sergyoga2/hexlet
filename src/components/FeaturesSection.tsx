@@ -1,60 +1,85 @@
 import {
+  Badge,
   Container,
-  Title,
-  Text,
   SimpleGrid,
-  Card,
+  Text,
   ThemeIcon,
+  Title,
 } from '@mantine/core'
-import {
-  IconRocket,
-  IconShieldCheck,
-  IconChartBar,
-} from '@tabler/icons-react'
+import type { ReactNode } from 'react'
+import { IconGauge, IconLock, IconSparkles } from '@tabler/icons-react'
+import classes from './FeaturesSection.module.css'
+
+interface FeatureProps {
+  icon: ReactNode
+  title: string
+  description: string
+}
+
+function Feature({ icon, title, description }: FeatureProps) {
+  return (
+    <div>
+      <ThemeIcon variant="light" size={44} radius="md">
+        {icon}
+      </ThemeIcon>
+      <Text mt="sm" mb={7} fw={600}>
+        {title}
+      </Text>
+      <Text size="sm" c="dimmed" lh={1.6}>
+        {description}
+      </Text>
+    </div>
+  )
+}
 
 const features = [
   {
-    icon: IconRocket,
-    title: 'Быстрый запуск',
+    icon: <IconGauge size={26} stroke={1.5} />,
+    title: 'Скорость внедрения',
     description:
-      'Начните работу за считанные минуты. Простая настройка без сложных конфигураций.',
+      'Готовые сценарии и шаблоны помогают запустить продукт в работу уже в первый день.',
   },
   {
-    icon: IconShieldCheck,
-    title: 'Надёжность и безопасность',
+    icon: <IconLock size={26} stroke={1.5} />,
+    title: 'Надёжная защита',
     description:
-      'Ваши данные защищены на всех уровнях. Шифрование, резервные копии и мониторинг 24/7.',
+      'Контроль доступа, аудит действий и резервное копирование для безопасной работы команды.',
   },
   {
-    icon: IconChartBar,
-    title: 'Аналитика в реальном времени',
+    icon: <IconSparkles size={26} stroke={1.5} />,
+    title: 'Удобство для команды',
     description:
-      'Отслеживайте ключевые метрики и принимайте решения на основе данных.',
+      'Интуитивный интерфейс и автоматизация рутины, чтобы фокусироваться на результате.',
   },
 ]
 
 export function FeaturesSection() {
   return (
     <Container size="lg" py={80}>
-      <Title order={2} ta="center" mb="md">
-        Почему выбирают нас
-      </Title>
-      <Text ta="center" c="dimmed" mb={50} maw={600} mx="auto">
-        Три причины, по которым клиенты остаются с нами надолго
-      </Text>
-      <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="xl">
+      <div className={classes.content}>
+        <Badge size="lg" variant="filled" radius="sm">
+          Почему выбирают нас
+        </Badge>
+
+        <Title className={classes.title} mt="sm">
+          Все ключевые инструменты в{' '}
+          <span className={classes.highlight}>одном окне</span>
+        </Title>
+
+        <Text c="dimmed" mt="md">
+          Три сильные стороны сервиса, которые помогают командам запускать проекты
+          быстрее, работать безопасно и стабильно масштабироваться.
+        </Text>
+      </div>
+
+      <SimpleGrid cols={{ base: 1, md: 3 }} spacing={{ base: 'xl', md: 50 }} mt={50}>
         {features.map((feature) => (
-          <Card key={feature.title} shadow="sm" padding="xl" radius="md">
-            <ThemeIcon size={50} radius="md" variant="light" mb="md">
-              <feature.icon size={28} />
-            </ThemeIcon>
-            <Text fw={600} size="lg" mb="xs">
-              {feature.title}
-            </Text>
-            <Text c="dimmed" size="sm">
-              {feature.description}
-            </Text>
-          </Card>
+          <Feature
+            key={feature.title}
+            icon={feature.icon}
+            title={feature.title}
+            description={feature.description}
+          />
         ))}
       </SimpleGrid>
     </Container>
