@@ -61,10 +61,10 @@ export function FeaturesSection() {
           Возможности платформы
         </Badge>
 
-        <Title className={classes.title} mt="sm">
-          Все ключевые инструменты в{' '}
-          <span className={classes.highlight}>одном окне</span>
-        </Title>
+          <Title className={classes.title} mt="sm">
+            Все ключевые инструменты в{' '}
+            <span className={classes.highlight}>одном окне</span>
+          </Title>
 
         <Text c="dimmed" className={classes.description}>
           Блок после Hero в стиле FeaturesTitle: выразительный заголовок, короткое
