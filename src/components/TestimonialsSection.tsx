@@ -45,7 +45,7 @@ export function TestimonialsSection() {
               &ldquo;{t.text}&rdquo;
             </Text>
             <Group>
-              <Avatar color="blue" radius="xl">
+              <Avatar color="indigo" radius="xl">
                 {t.avatar}
               </Avatar>
               <div>
