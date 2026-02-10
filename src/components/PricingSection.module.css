@@ -1,0 +1,78 @@
+.wrapper {
+  padding: 4rem 0;
+  background-color: #f0e1dd;
+}
+
+.heading {
+  text-align: center;
+}
+
+.card {
+  background-color: var(--mantine-color-body);
+  transition: all 0.3s ease;
+  position: relative;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.popularCard {
+  background: #14223e;
+  color: #edf2ff;
+  border-color: var(--mantine-color-blue-6);
+  border-width: 2px;
+}
+
+.popularCard :global(.mantine-Text-root),
+.popularCard :global(.mantine-Title-root) {
+  color: #edf2ff;
+}
+
+.popularBadge {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--mantine-color-blue-6);
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.planName {
+  color: var(--mantine-color-text);
+  font-weight: 700;
+}
+
+.popularCard .planName {
+  color: #edf2ff;
+}
+
+.price {
+  color: var(--mantine-color-text);
+  font-size: 41px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.popularPrice {
+  color: #edf2ff;
+}
+
+.benefit {
+  color: #10d5e4;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.details {
+  text-decoration: underline;
+}

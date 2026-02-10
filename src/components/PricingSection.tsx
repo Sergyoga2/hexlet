@@ -1,110 +1,135 @@
 import {
-  Container,
+  Box,
+  Card,
+  SimpleGrid,
   Title,
   Text,
-  SimpleGrid,
-  Card,
-  List,
   Button,
-  Badge,
-  ThemeIcon,
+  Stack,
+  Group,
+  Container,
+  Divider,
 } from '@mantine/core'
-import { IconCheck } from '@tabler/icons-react'
-
-const plans = [
-  {
-    name: 'Старт',
-    price: 'Бесплатно',
-    description: 'Для знакомства с платформой',
-    features: ['До 3 проектов', '1 ГБ хранилища', 'Email-поддержка'],
-    highlighted: false,
-  },
-  {
-    name: 'Бизнес',
-    price: '2 990 ₽/мес',
-    description: 'Для растущих команд',
-    features: [
-      'Безлимит проектов',
-      '50 ГБ хранилища',
-      'Приоритетная поддержка',
-      'Аналитика',
-    ],
-    highlighted: true,
-  },
-  {
-    name: 'Корпоративный',
-    price: 'По запросу',
-    description: 'Индивидуальные условия',
-    features: [
-      'Всё из Бизнес',
-      'SLA 99.99%',
-      'Выделенный менеджер',
-      'On-premise установка',
-    ],
-    highlighted: false,
-  },
-]
+import { IconArrowRight, IconCheck } from '@tabler/icons-react'
+import classes from './PricingSection.module.css'
 
 export function PricingSection() {
+  const plans = [
+    {
+      name: 'Месячный',
+      price: '3 900 ₽',
+      description: 'Для знакомства с платформой',
+      period: 'за месяц',
+      features: [
+        'Более 45 курсов',
+        '130+ навыков для развития',
+        'AI-помощник по обучению',
+        'Онлайн-тренажер 24/7 с автопроверками',
+        'Учебные проекты для тренировки',
+        'Доступ в закрытое сообщество',
+      ],
+    },
+    {
+      name: 'Годовой',
+      price: '2 900 ₽',
+      description: 'Для непрерывного роста',
+      period: 'за месяц',
+      benefit: 'выгода 25%',
+      details: 'при оплате 34 800 ₽ за год',
+      features: ['Те же опции, но дешевле'],
+      popular: true,
+    },
+    {
+      name: 'Трехлетний',
+      price: '2 400 ₽',
+      description: 'Максимальная выгода без ограничений',
+      period: 'за месяц',
+      benefit: 'выгода 38%',
+      details: 'при оплате 86 400 ₽ за три года',
+      features: ['Все курсы Хекслета доступны для прохождения'],
+    },
+  ]
+
   return (
-    <div style={{ backgroundColor: 'var(--mantine-color-gray-0)', padding: '80px 0' }}>
-      <Container size="lg">
-        <Title order={2} ta="center" mb="md">
-          Тарифы
-        </Title>
-        <Text ta="center" c="dimmed" mb={50}>
-          Выберите план, который подходит вашей команде
-        </Text>
-        <SimpleGrid cols={{ base: 1, sm: 3 }} spacing="xl">
-          {plans.map((plan) => (
-            <Card
-              key={plan.name}
-              shadow={plan.highlighted ? 'md' : 'sm'}
-              padding="xl"
-              radius="md"
-              withBorder={plan.highlighted}
-              style={
-                plan.highlighted
-                  ? { borderColor: 'var(--mantine-color-indigo-6)', borderWidth: 2 }
-                  : undefined
-              }
-            >
-              {plan.highlighted && (
-                <Badge color="indigo" variant="filled" mb="sm">
-                  Популярный
-                </Badge>
-              )}
-              <Text fw={700} size="xl" mb={4}>
-                {plan.name}
-              </Text>
-              <Text c="dimmed" size="sm" mb="md">
-                {plan.description}
-              </Text>
-              <Title order={3} mb="md">
-                {plan.price}
-              </Title>
-              <List
-                spacing="sm"
-                mb="xl"
-                icon={
-                  <ThemeIcon color="teal" size={20} radius="xl">
-                    <IconCheck size={12} />
-                  </ThemeIcon>
-                }
+    <Box className={classes.wrapper}>
+      <Container size="xl">
+        <Stack align="center" gap="xl">
+          <Stack align="center" gap="xs">
+            <Title order={1} fw={800} className={classes.heading}>
+              Выберите подходящий план
+            </Title>
+            <Text c="dimmed" size="lg" ta="center" maw={500}>
+              Гибкие варианты подписки для любых целей
+            </Text>
+          </Stack>
+
+          <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="xl" w="100%">
+            {plans.map((plan) => (
+              <Card
+                key={plan.name}
+                withBorder
+                radius="lg"
+                className={`${classes.card} ${plan.popular ? classes.popularCard : ''}`}
+                padding="xl"
               >
-                {plan.features.map((f) => (
-                  <List.Item key={f}>
-                    <Text size="sm">{f}</Text>
-                  </List.Item>
-                ))}
-              </List>
-              <Button fullWidth variant={plan.highlighted ? 'filled' : 'outline'}>
-                Выбрать
-              </Button>
-            </Card>
-          ))}
-        </SimpleGrid>
+                {plan.popular && <Box className={classes.popularBadge}>Популярный</Box>}
+
+                <Stack gap="lg" h="100%">
+                  <Stack gap="xs">
+                    <Title order={3} className={classes.planName}>
+                      {plan.name}
+                    </Title>
+                    <Text c="dimmed" size="sm">
+                      {plan.description}
+                    </Text>
+                  </Stack>
+
+                  <Group gap="xs" align="baseline">
+                    <Text className={`${classes.price} ${plan.popular ? classes.popularPrice : ''}`}>
+                      {plan.price}
+                    </Text>
+                    <Text c="dimmed" size="sm">
+                      {plan.period}
+                    </Text>
+                  </Group>
+
+                  {(plan.benefit || plan.details) && (
+                    <Stack gap={2}>
+                      {plan.benefit && <Text className={classes.benefit}>{plan.benefit}</Text>}
+                      {plan.details && <Text className={classes.details}>{plan.details}</Text>}
+                    </Stack>
+                  )}
+
+                  <Divider />
+
+                  <Stack gap="sm" style={{ flex: 1 }}>
+                    {plan.features.map((feature) => (
+                      <Group key={feature} gap="sm" wrap="nowrap">
+                        <IconCheck
+                          color="var(--mantine-color-teal-6)"
+                          width={18}
+                          height={18}
+                          style={{ flexShrink: 0 }}
+                        />
+                        <Text size="sm">{feature}</Text>
+                      </Group>
+                    ))}
+                  </Stack>
+
+                  <Button
+                    size="md"
+                    fullWidth
+                    variant={plan.popular ? 'filled' : 'outline'}
+                    rightSection={<IconArrowRight size={16} />}
+                  >
+                    Оформить подписку
+                  </Button>
+                </Stack>
+              </Card>
+            ))}
+          </SimpleGrid>
+        </Stack>
       </Container>
-    </div>
+    </Box>
   )
 }
