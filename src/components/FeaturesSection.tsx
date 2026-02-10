@@ -1,13 +1,19 @@
 import {
-  Badge,
+  Button,
   Container,
+  Group,
   SimpleGrid,
   Text,
   ThemeIcon,
   Title,
 } from '@mantine/core'
 import type { ReactNode } from 'react'
-import { IconGauge, IconLock, IconSparkles } from '@tabler/icons-react'
+import {
+  IconBox,
+  IconCode,
+  IconCircleDashed,
+  IconFlame,
+} from '@tabler/icons-react'
 import classes from './FeaturesSection.module.css'
 
 interface FeatureProps {
@@ -19,13 +25,13 @@ interface FeatureProps {
 function Feature({ icon, title, description }: FeatureProps) {
   return (
     <div>
-      <ThemeIcon variant="light" size={44} radius="md">
+      <ThemeIcon className={classes.featureIcon} size={44} radius="md">
         {icon}
       </ThemeIcon>
-      <Text mt="sm" mb={7} fw={600}>
+      <Text mt="sm" mb={7} className={classes.featureTitle}>
         {title}
       </Text>
-      <Text size="sm" c="dimmed" lh={1.6}>
+      <Text size="sm" className={classes.featureDescription}>
         {description}
       </Text>
     </div>
@@ -34,64 +40,52 @@ function Feature({ icon, title, description }: FeatureProps) {
 
 const features = [
   {
-    icon: <IconGauge size={26} stroke={1.5} />,
-    title: 'Скорость внедрения',
+    icon: <IconBox size={22} stroke={1.8} />,
+    title: '56 навыков в каталоге',
     description:
-      'Готовые сценарии и шаблоны помогают запустить продукт в работу уже в первый день.',
+      'От frontend и backend до DevOps и алгоритмов — выбирайте трек под свою цель и уровень.',
   },
   {
-    icon: <IconLock size={26} stroke={1.5} />,
-    title: 'Надёжная защита',
+    icon: <IconCode size={22} stroke={1.8} />,
+    title: 'Доступ ко всему каталогу',
     description:
-      'Контроль доступа, аудит действий и резервное копирование для безопасной работы команды.',
+      'Одна подписка открывает весь каталог навыков Хекслета без ограничений по направлениям.',
   },
   {
-    icon: <IconSparkles size={26} stroke={1.5} />,
-    title: 'Удобство для команды',
+    icon: <IconCircleDashed size={22} stroke={1.8} />,
+    title: 'Стоимость от 2400 ₽/мес',
     description:
-      'Интуитивный интерфейс и автоматизация рутины, чтобы фокусироваться на результате.',
+      'Прозрачные тарифы без скрытых платежей: выбирайте комфортный формат и учитесь в своём темпе.',
+  },
+  {
+    icon: <IconFlame size={22} stroke={1.8} />,
+    title: 'Практика и поддержка',
+    description:
+      'Закрепляйте знания на проектах, получайте обратную связь и системно прокачивайте навыки.',
   },
 ]
 
 export function FeaturesSection() {
   return (
-    <Container size="lg" py={80}>
-      <div className={classes.content}>
-      <div className={classes.wrapper}>
-        <Badge size="lg" variant="filled" radius="sm">
-          Возможности платформы
-        </Badge>
+    <Container size="lg" className={classes.wrapper}>
+      <div className={classes.grid}>
+        <div className={classes.leftColumn}>
+          <Title className={classes.title}>
+            Подписка поможет вам прокачать навыки!
+          </Title>
 
-        <Title className={classes.title} mt="sm">
-          Все ключевые инструменты в{' '}
-          <span className={classes.highlight}>одном окне</span>
-        </Title>
+          <Text className={classes.description}>
+            Получите доступ ко всем 56 навыкам Хекслета по подписке от 2400 ₽ в месяц. Учитесь последовательно, закрепляйте знания на практике и растите в профессии без пауз.
+          </Text>
 
-        <Text c="dimmed" mt="md">
-          Блок оформлен в стиле FeaturesTitle: выразительный заголовок, короткое
-          пояснение и преимущества, которые быстро показывают ценность продукта.
-        </Text>
-      </div>
+          <Group mt={30}>
+            <Button className={classes.control} radius="md" size="md">
+              Выбрать подписку
+            </Button>
+          </Group>
+        </div>
 
-      <SimpleGrid cols={{ base: 1, md: 3 }} spacing={{ base: 'xl', md: 50 }} mt={50}>
-        {features.map((feature) => (
-          <Feature
-            key={feature.title}
-            icon={feature.icon}
-            title={feature.title}
-            description={feature.description}
-          />
-        ))}
-      </SimpleGrid>
-          Все ключевые инструменты в <span className={classes.highlight}>одном окне</span>
-        </Title>
-
-        <Text c="dimmed" className={classes.description}>
-          Блок в стиле FeaturesTitle: чистая структура, выразительный заголовок и три
-          преимущества, которые помогают быстро понять ценность продукта.
-        </Text>
-
-        <SimpleGrid cols={{ base: 1, sm: 3 }} spacing={{ base: 'xl', md: 50 }} mt={50}>
+        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={{ base: 'xl', md: 30 }}>
           {features.map((feature) => (
             <Feature
               key={feature.title}
