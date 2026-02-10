@@ -1,0 +1,24 @@
+.wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 800;
+  max-width: 760px;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    font-size: 28px;
+  }
+}
+
+.highlight {
+  color: var(--mantine-color-blue-filled);
+}
+
+.description {
+  margin-top: var(--mantine-spacing-md);
+  max-width: 640px;
+}
