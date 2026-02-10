@@ -56,12 +56,33 @@ const features = [
 export function FeaturesSection() {
   return (
     <Container size="lg" py={80}>
+      <div className={classes.content}>
       <div className={classes.wrapper}>
         <Badge size="lg" variant="filled" radius="sm">
           Возможности платформы
         </Badge>
 
         <Title className={classes.title} mt="sm">
+          Все ключевые инструменты в{' '}
+          <span className={classes.highlight}>одном окне</span>
+        </Title>
+
+        <Text c="dimmed" mt="md">
+          Блок оформлен в стиле FeaturesTitle: выразительный заголовок, короткое
+          пояснение и преимущества, которые быстро показывают ценность продукта.
+        </Text>
+      </div>
+
+      <SimpleGrid cols={{ base: 1, md: 3 }} spacing={{ base: 'xl', md: 50 }} mt={50}>
+        {features.map((feature) => (
+          <Feature
+            key={feature.title}
+            icon={feature.icon}
+            title={feature.title}
+            description={feature.description}
+          />
+        ))}
+      </SimpleGrid>
           Все ключевые инструменты в <span className={classes.highlight}>одном окне</span>
         </Title>
 
