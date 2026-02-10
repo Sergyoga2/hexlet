@@ -14,7 +14,7 @@ export function StatsSection() {
         <SimpleGrid cols={{ base: 2, sm: 4 }} spacing="xl">
           {stats.map((stat) => (
             <div key={stat.label} style={{ textAlign: 'center' }}>
-              <Title order={2} c="blue">
+              <Title order={2} c="indigo">
                 {stat.value}
               </Title>
               <Text c="dimmed" size="sm" mt="xs">

@@ -65,12 +65,12 @@ export function PricingSection() {
               withBorder={plan.highlighted}
               style={
                 plan.highlighted
-                  ? { borderColor: 'var(--mantine-color-blue-6)', borderWidth: 2 }
+                  ? { borderColor: 'var(--mantine-color-indigo-6)', borderWidth: 2 }
                   : undefined
               }
             >
               {plan.highlighted && (
-                <Badge color="blue" variant="filled" mb="sm">
+                <Badge color="indigo" variant="filled" mb="sm">
                   Популярный
                 </Badge>
               )}

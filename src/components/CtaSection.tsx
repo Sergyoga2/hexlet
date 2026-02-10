@@ -2,7 +2,7 @@ import { Container, Title, Text, Button, Group } from '@mantine/core'
 
 export function CtaSection() {
   return (
-    <div style={{ backgroundColor: 'var(--mantine-color-blue-6)', color: 'white', padding: '80px 0' }}>
+    <div style={{ backgroundColor: 'var(--mantine-color-indigo-6)', color: 'white', padding: '80px 0' }}>
       <Container size="sm" style={{ textAlign: 'center' }}>
         <Title order={2} mb="md" c="white">
           Готовы начать?
@@ -12,7 +12,7 @@ export function CtaSection() {
           Первые 14 дней — бесплатно.
         </Text>
         <Group justify="center">
-          <Button size="lg" variant="white" color="blue">
+          <Button size="lg" variant="white" color="indigo">
             Попробовать бесплатно
           </Button>
         </Group>

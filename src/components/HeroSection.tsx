@@ -8,7 +8,7 @@ import {
 
 export function HeroSection() {
   return (
-    <div style={{ backgroundColor: 'var(--mantine-color-blue-6)', color: 'white', padding: '80px 0' }}>
+    <div style={{ backgroundColor: 'var(--mantine-color-indigo-6)', color: 'white', padding: '80px 0' }}>
       <Container size="lg">
         <Title order={1} style={{ fontSize: '3rem', marginBottom: '1rem' }}>
           Ваш продукт — быстрее, проще, лучше
@@ -18,7 +18,7 @@ export function HeroSection() {
           Автоматизация, аналитика и удобные инструменты — всё в одном месте.
         </Text>
         <Group>
-          <Button size="lg" variant="white" color="blue">
+          <Button size="lg" variant="white" color="indigo">
             Начать бесплатно
           </Button>
           <Button size="lg" variant="outline" color="white">
