@@ -57,6 +57,7 @@ export function FeaturesSection() {
   return (
     <Container size="lg" py={80}>
       <div className={classes.content}>
+      <div className={classes.wrapper}>
         <Badge size="lg" variant="filled" radius="sm">
           Возможности платформы
         </Badge>
@@ -82,6 +83,25 @@ export function FeaturesSection() {
           />
         ))}
       </SimpleGrid>
+          Все ключевые инструменты в <span className={classes.highlight}>одном окне</span>
+        </Title>
+
+        <Text c="dimmed" className={classes.description}>
+          Блок в стиле FeaturesTitle: чистая структура, выразительный заголовок и три
+          преимущества, которые помогают быстро понять ценность продукта.
+        </Text>
+
+        <SimpleGrid cols={{ base: 1, sm: 3 }} spacing={{ base: 'xl', md: 50 }} mt={50}>
+          {features.map((feature) => (
+            <Feature
+              key={feature.title}
+              icon={feature.icon}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </SimpleGrid>
+      </div>
     </Container>
   )
 }
